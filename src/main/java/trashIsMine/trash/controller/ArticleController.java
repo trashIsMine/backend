@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import trashIsMine.trash.dto.ArticleForm;
 import trashIsMine.trash.entity.Article;
 import trashIsMine.trash.repository.ArticleRepository;
@@ -14,7 +15,7 @@ import trashIsMine.trash.repository.ArticleRepository;
 import java.util.List;
 
 @Slf4j
-@Controller
+@RestController
 public class ArticleController {
 
     @Autowired
