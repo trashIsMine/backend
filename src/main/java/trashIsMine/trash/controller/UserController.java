@@ -2,6 +2,9 @@ package trashIsMine.trash.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,15 +24,23 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/hello")
-    public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("hello");
+//    @GetMapping("/hello")
+//    public ResponseEntity<String> hello() {
+//        return ResponseEntity.ok("hello");
+//    }
+//
+//    @PostMapping("/test-redirect")
+//    public void testRedirect(HttpServletResponse response) throws IOException {
+//        response.sendRedirect("/user");
+//    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpServletRequest request, HttpServletResponse response) {
+        SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+        logoutHandler.logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+        return ResponseEntity.ok("Logged out successfully");
     }
 
-    @PostMapping("/test-redirect")
-    public void testRedirect(HttpServletResponse response) throws IOException {
-        response.sendRedirect("/user");
-    }
 
     @PostMapping("/signup")
     public ResponseEntity<UserDto> signup(
