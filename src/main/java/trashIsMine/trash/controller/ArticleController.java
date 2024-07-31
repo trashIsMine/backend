@@ -4,10 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import trashIsMine.trash.dto.ArticleForm;
 import trashIsMine.trash.entity.Article;
 import trashIsMine.trash.repository.ArticleRepository;
@@ -74,7 +71,10 @@ public class ArticleController {
     @PostMapping("/articles/update")
     public String update(ArticleForm form){
         //1.DTO를 엔티티로 변환하기
-        Article articleEntity = form.toEntity();
+
+
+        Article articleEntity;
+        articleEntity = form.toEntity();
         log.info(articleEntity.toString());
         //2.엔티티를 DB에 저장하기
         //2-1. DB에서 기존 데이터 가져오기
@@ -88,5 +88,16 @@ public class ArticleController {
         return "redirect:/articles/"+ articleEntity.getId();
     }
 
+
+//    @ApiOperation(value = "Get an article by ID")
+//    @GetMapping("/articles/{id}")
+//    public String show(
+//            @ApiParam(value = "ID of the article to retrieve", required = true, example = "1")
+//            @PathVariable Long id, Model model) {
+//        log.info("id = " + id);
+//        Article articleEntity = articleRepository.findById(id).orElse(null);
+//        model.addAttribute("article", articleEntity);
+//        return "articles/show";
+//    }
 
 }
