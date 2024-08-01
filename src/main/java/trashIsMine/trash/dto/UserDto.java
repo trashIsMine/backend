@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import trashIsMine.trash.domain.Article;
 import trashIsMine.trash.domain.User;
 
 import java.util.Set;
@@ -42,6 +43,8 @@ public class UserDto {
 
     private Set<AuthorityDto> authorityDtoSet;
 
+//    private Set<Article> articles;
+
     public static UserDto from(User user) {
         if(user == null) return null;
 
@@ -52,6 +55,7 @@ public class UserDto {
                 .birth(user.getBirth())
                 .gender(user.getGender())
                 .introduction(user.getIntroduction())
+//                .articles(user.getArticles())
                 .authorityDtoSet(user.getAuthorities().stream()
                         .map(authority -> AuthorityDto.builder().authorityName(authority.getAuthority()).build())
                         .collect(Collectors.toSet()))

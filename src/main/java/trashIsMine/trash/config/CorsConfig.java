@@ -20,6 +20,7 @@ public class CorsConfig {
         config.addAllowedMethod("*");
 
         source.registerCorsConfiguration("/user/**", config);
+        source.registerCorsConfiguration("/index/**", config);
         return new CorsFilter(source);
     }
 

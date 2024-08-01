@@ -4,21 +4,28 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
-import trashIsMine.trash.entity.Article;
+import trashIsMine.trash.domain.Article;
+import trashIsMine.trash.domain.User;
+
+import java.util.Set;
 
 @AllArgsConstructor
 @ToString
 @Data
 public class ArticleForm {
 
-    @Schema(description = "id",example = "id값")
-    private Long id;
+//    private Long id;
 
     private String title;
+
+//    private User author;
 
     private String content;
 
     private  String location;
+
+//    private String username;
+//    private Set<Article> articles;
 
     private String participants;
 
@@ -34,5 +41,5 @@ public class ArticleForm {
 
     private Long lat;
 
-    public Article toEntity() {return new Article(id, title, content, location, participants, time, views, description, imgSrc, lng, lat); }
+    public Article toEntity() {return new Article( title ,content, location,  participants, time, views, description, imgSrc, lng, lat); }
 }

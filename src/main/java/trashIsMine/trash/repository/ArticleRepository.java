@@ -1,7 +1,7 @@
 package trashIsMine.trash.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import trashIsMine.trash.entity.Article;
+import trashIsMine.trash.domain.Article;
 
 import java.util.ArrayList;
 
