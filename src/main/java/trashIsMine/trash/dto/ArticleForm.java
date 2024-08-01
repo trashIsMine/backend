@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
+import org.springframework.web.multipart.MultipartFile;
 import trashIsMine.trash.domain.Article;
 import trashIsMine.trash.domain.User;
 
@@ -35,11 +36,11 @@ public class ArticleForm {
 
     private String description;
 
-    private String imgSrc;
+    private MultipartFile imageData;
 
     private Long lng;
 
     private Long lat;
 
-    public Article toEntity() {return new Article( title ,content, location,  participants, time, views, description, imgSrc, lng, lat); }
+    public Article toEntity() {return new Article( title ,content, location,  participants, time, views, description, imageData, lng, lat); }
 }
