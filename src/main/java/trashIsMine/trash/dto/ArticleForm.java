@@ -25,22 +25,28 @@ public class ArticleForm {
 
     private  String location;
 
-//    private String username;
-//    private Set<Article> articles;
-
     private String participants;
 
     private String time;
 
-    private Long views;
+    private Long views = 0L;
 
     private String description;
 
-    private MultipartFile imageData;
+    private MultipartFile imageFile;
 
-    private Long lng;
+    private String lng;
 
-    private Long lat;
+    private String lat;
 
-    public Article toEntity() {return new Article( title ,content, location,  participants, time, views, description, imageData, lng, lat); }
+    // 기본 생성자
+    public ArticleForm() {
+        this.views = 0L; // 기본값 설정
+    }
+
+
+    //    public Article toEntity() {return new Article( title ,content, location,  participants, time, views, description, imageFile, lng, lat); }
+public Article toEntity(String imagePath) {
+    return new Article(title, content, location, participants, time, views, description, imagePath, lng, lat);
+}
 }

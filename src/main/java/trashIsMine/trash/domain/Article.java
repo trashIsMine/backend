@@ -2,9 +2,6 @@ package trashIsMine.trash.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -21,16 +18,10 @@ public class Article {
     @Column
     private String title;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id") // User 엔티티의 id를 참조하는 외래 키
-//    private User author;
-
-//    private String username; //username이 있어야지만 글을 쓸 수 있겠끔
-
     @Column
     private String content;
 
-    private  String location;
+    private String location;
 
     private String participants;
 
@@ -40,15 +31,13 @@ public class Article {
 
     private String description;
 
+    private String imagePath; // 이미지 파일의 경로를 저장
 
-    @Column(name = "image_data")
-    private MultipartFile imageData; // BLOB 데이터 타입으로 이미지를 저장
+    private String lng;
 
-    private Long lng;
+    private String lat;
 
-    private Long lat;
-
-    public Article(String title, String content, String location, String participants, String time, Long views, String description, byte[] imageData, Long lng, Long lat) {
+    public Article(String title, String content, String location, String participants, String time, Long views, String description, String imagePath, String lng, String lat) {
         this.title = title;
         this.content = content;
         this.location = location;
@@ -56,9 +45,8 @@ public class Article {
         this.time = time;
         this.views = views;
         this.description = description;
-        this.imageData = imageData;
+        this.imagePath = imagePath;
         this.lng = lng;
         this.lat = lat;
     }
-
 }
