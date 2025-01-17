@@ -20,6 +20,10 @@ public class CorsConfig {
         config.addAllowedMethod("*");
 
         source.registerCorsConfiguration("/user/**", config);
+        source.registerCorsConfiguration("/index/**", config);
+        source.registerCorsConfiguration("/files/**", config);
+        source.registerCorsConfiguration("/**", config);
+
         return new CorsFilter(source);
     }
 

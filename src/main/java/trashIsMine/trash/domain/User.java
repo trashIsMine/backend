@@ -46,6 +46,9 @@ public class User  implements  UserDetails{
     @ManyToMany
     private Set<Authority> authorities;
 
+//    @OneToMany(mappedBy = "author")
+//    private Set<Article> articles; // 작성한 게시글들을 저장
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("user"));

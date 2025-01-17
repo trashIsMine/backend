@@ -58,8 +58,8 @@ public class WebSecurityConfig {
                 )
 
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                        .requestMatchers("/user/signup", "/user/**", "/api/signup","/swagger-ui/**","/", "/v3/api-docs/**").permitAll()
-//                        .requestMatchers(PathRequest.toH2Console()).permitAll()
+                        .requestMatchers("/user/signup", "/user/**", "/api/signup","/swagger-ui/**","/", "/v3/api-docs/**","/**","/index/**").permitAll()
+//                        .requestMatchers("/articles/create").authenticated() // 글 작성 엔드포인트는 인증된 사용자만 접근 가능
                         .anyRequest().authenticated()
                 )
 
@@ -71,7 +71,6 @@ public class WebSecurityConfig {
 //                .headers(headers ->
 //                        headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
 //                )
-
                 .with(new JwtSecurityConfig(tokenProvider), customizer -> {
                 });
         return http.build();
