@@ -23,8 +23,6 @@ import trashIsMine.trash.jwt.TokenProvider;
 public class WebSecurityConfig {
 
 
-
-
     private final TokenProvider tokenProvider;
     private final CorsFilter corsFilter;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;

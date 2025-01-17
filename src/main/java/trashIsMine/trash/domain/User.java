@@ -57,7 +57,7 @@ public class User  implements  UserDetails{
     //id 반환시키면 됨
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     //여기가 문제가 되면 수정할 수 있어야 함
@@ -99,4 +99,6 @@ public class User  implements  UserDetails{
 //        return UserDetails.super.isEnabled();
         return true;
     }
+
+
 }

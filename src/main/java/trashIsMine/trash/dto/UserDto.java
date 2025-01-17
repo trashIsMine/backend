@@ -43,7 +43,7 @@ public class UserDto {
 
     private Set<AuthorityDto> authorityDtoSet;
 
-//    private Set<Article> articles;
+
 
     public static UserDto from(User user) {
         if(user == null) return null;
