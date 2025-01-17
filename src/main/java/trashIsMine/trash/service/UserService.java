@@ -62,4 +62,21 @@ public class UserService {
                         .orElseThrow(() -> new NotFoundMemberException("Member not found"))
         );
     }
+
+    public boolean userExists(String username) {
+        return userRepository.findByUsername(username).isPresent();
+    }
+
+    public Long findUserIdByUsername(String username) {
+        Optional<User> user = userRepository.findByUsername(username);
+        return user.map(User::getId).orElse(null); // 사용자 존재 시 ID 반환, 존재하지 않으면 null
+    }
+    // 사용자 삭제
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+    // 사용자 ID로 사용자 조회
+    public User findUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
 }

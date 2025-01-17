@@ -91,4 +91,12 @@ public class TokenProvider implements InitializingBean {
         }
         return false;
     }
+    public String getUsernameFromToken(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+        return claims.getSubject();
+    }
 }
