@@ -40,7 +40,7 @@ public class UserController {
         logoutHandler.logout(request, response, SecurityContextHolder.getContext().getAuthentication());
         return ResponseEntity.ok("Logged out successfully");
     }
-
+//커밋
 
     @PostMapping("/signup")
     public ResponseEntity<UserDto> signup(
